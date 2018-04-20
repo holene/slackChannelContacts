@@ -3,7 +3,7 @@
 
 # Ignore Token file
 GetEmailSlackBot.config
-*.config
+
 
 # User-specific files
 *.suo
