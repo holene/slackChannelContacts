@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,10 @@ namespace GetEmailSlackBot
     {
         static void Main(string[] args)
         {
+
+            string BotToken = ConfigurationManager.AppSettings["bottoken"];
+
+            Console.WriteLine(BotToken);
         }
     }
 }
