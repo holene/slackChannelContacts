@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetEmailSlackBot", "GetEmailSlackBot\GetEmailSlackBot.csproj", "{A01511B5-C27D-44B5-830B-82DA69FA1DCE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetEmailSlackBot.Test", "GetEmailSlackBot.Test\GetEmailSlackBot.Test.csproj", "{AB32086A-063D-456F-8042-74CFE78851E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetSlackMailAPI", "GetSlackMailAPI\GetSlackMailAPI.csproj", "{7EDB0D88-6753-4454-9848-F759CC236ED1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{A01511B5-C27D-44B5-830B-82DA69FA1DCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A01511B5-C27D-44B5-830B-82DA69FA1DCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A01511B5-C27D-44B5-830B-82DA69FA1DCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB32086A-063D-456F-8042-74CFE78851E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB32086A-063D-456F-8042-74CFE78851E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB32086A-063D-456F-8042-74CFE78851E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB32086A-063D-456F-8042-74CFE78851E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EDB0D88-6753-4454-9848-F759CC236ED1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EDB0D88-6753-4454-9848-F759CC236ED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EDB0D88-6753-4454-9848-F759CC236ED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EDB0D88-6753-4454-9848-F759CC236ED1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

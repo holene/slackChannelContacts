@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
-using SlackAPI;
+using GetEmailSlackBot.WebLogic;
 
 namespace GetEmailSlackBot
 {
@@ -14,8 +15,15 @@ namespace GetEmailSlackBot
         {
 
             string BotToken = ConfigurationManager.AppSettings["bottoken"];
+            var client = new SlackWebClient(BotToken);
+            var bot = new MailBot(client);
 
-            Console.WriteLine(BotToken);
+            bot.Run();
+
+            while (true)
+            {
+
+            }
         }
     }
 }
