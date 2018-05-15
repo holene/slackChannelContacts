@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GetSlackMailAPI.Services;
 using Microsoft.AspNetCore.Mvc;
-using GetEmailSlackBot.WebLogic;
+using GetSlackMailAPI.WebLogic;
 
 
 namespace GetSlackMailAPI.Controllers
@@ -13,15 +13,23 @@ namespace GetSlackMailAPI.Controllers
     public class SlackController : Controller
     {
         private ITokenProvider _tokenProvider;
+        private IMailBot _mailBot;
+        private IWebClient _webClient;
 
-        public SlackController(ITokenProvider tokenProvider)
+        public SlackController(ITokenProvider tokenProvider,IMailBot mailbot, IWebClient webclient )
         {
-            _tokenProvider = tokenProvider; 
+            _tokenProvider = tokenProvider;
+            _mailBot = mailbot;
+            _webClient = webclient;
         }
 
-        public IActionResult Index()
+        public void Index()
         {
-            //return Content(_tokenProvider.GetToken());
+            string channelID = "C0X725W2G";
+            string requesterID = "U93STPZ2L";
+
+            _mailBot.Run(channelID, requesterID);
+            //return Content();
         }
     }
 }

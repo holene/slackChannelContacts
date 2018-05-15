@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GetEmailSlackBot.SlackResponses;
-namespace GetEmailSlackBot.WebLogic
+using GetSlackMailAPI.SlackResponses;
+namespace GetSlackMailAPI.WebLogic
 {
-    interface IWebClient
+    public interface IWebClient
     {
         Task<AuthTestResponse> SendAuthMessage();
         Task<ConversationMembersResponse> GetChannelMembers(string channelName);

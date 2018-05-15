@@ -5,20 +5,21 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using GetEmailSlackBot.SlackResponses;
+using GetSlackMailAPI.SlackResponses;
 using Newtonsoft.Json.Linq;
+using GetSlackMailAPI.Services;
 
-namespace GetEmailSlackBot.WebLogic
+namespace GetSlackMailAPI.WebLogic
 {
     public class SlackWebClient : IWebClient
     {
         private HttpClient _webclient;
         private string bottoken;
 
-        public SlackWebClient(string token)
+        public SlackWebClient(ITokenProvider tokenProvider)
         {
             _webclient = new HttpClient();
-            this.bottoken = token;
+            this.bottoken = tokenProvider.GetToken();
         }
         public async Task<AuthTestResponse> SendAuthMessage()
         {

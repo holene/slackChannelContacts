@@ -4,9 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GetEmailSlackBot.WebLogic
+namespace GetSlackMailAPI.WebLogic
 {
-    class MailBot
+    public interface IMailBot
+    {
+        void Run(string channelID, string requesterID);
+    }
+
+    public class MailBot : IMailBot
     {
         private IWebClient _client;
 
@@ -18,11 +23,11 @@ namespace GetEmailSlackBot.WebLogic
 
 
 
-        public async void Run()
+        public async void Run(string channelID, string requesterID)
         {
             try
             {
-                var obj = await _client.GetChannelMembers("C0X725W2G");
+                var obj = await _client.GetChannelMembers(channelID);
                 Console.WriteLine(obj);
 
                 List<string> emails = new List<string>();
@@ -38,7 +43,7 @@ namespace GetEmailSlackBot.WebLogic
                     }
                 }
 
-                var OpenIMObject = await _client.OpenIM("U93STPZ2L");
+                var OpenIMObject = await _client.OpenIM(requesterID);
                 Console.WriteLine(OpenIMObject.ToString());
 
                 string emailsString = "";
@@ -52,7 +57,7 @@ namespace GetEmailSlackBot.WebLogic
 
                 var postResponse = await _client.PostMessage(OpenIMObject.channel.id, emailsString);
 
-                Console.WriteLine($"Sent following message: {postResponse.message.text}");
+                //Console.WriteLine($"Sent following message: {postResponse.message.text}");
             }
             catch (Exception e)
             {

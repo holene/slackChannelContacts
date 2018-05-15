@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using GetSlackMailAPI.Services;
-using GetEmailSlackBot.WebLogic;
+using GetSlackMailAPI.WebLogic;
 
 namespace GetSlackMailAPI
 {
@@ -52,7 +52,8 @@ namespace GetSlackMailAPI
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddScoped<IConfigSetting, KeyVaultStorage>();
             services.AddScoped<ITokenProvider, ConfigTokenProvider>();
-            services.AddScoped<>
+            services.AddScoped<IWebClient, SlackWebClient>();
+            services.AddScoped<IMailBot, MailBot>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
