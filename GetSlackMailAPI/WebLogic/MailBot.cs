@@ -20,9 +20,6 @@ namespace GetSlackMailAPI.WebLogic
             _client = client;
         }
 
-
-
-
         public async void Run(string channelID, string requesterID)
         {
             try
@@ -56,8 +53,6 @@ namespace GetSlackMailAPI.WebLogic
                 emailsString = emailsString.Remove(emailsString.Length - 4);
 
                 var postResponse = await _client.PostMessage(OpenIMObject.channel.id, emailsString);
-
-                //Console.WriteLine($"Sent following message: {postResponse.message.text}");
             }
             catch (Exception e)
             {

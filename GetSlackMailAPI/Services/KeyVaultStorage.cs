@@ -14,6 +14,7 @@ namespace GetSlackMailAPI.Services
         string GetSlackMailADID();
 
         string GetConfigBotToken();
+        string GetVerificationToken();
     }
 
     public class KeyVaultStorage : IConfigSetting
@@ -44,6 +45,10 @@ namespace GetSlackMailAPI.Services
         public string GetConfigBotToken()
         {
             return _configuration["bottoken"];
+        }
+        public string GetVerificationToken()
+        {
+            return _configuration["VerificationToken"];
         }
     }
 }

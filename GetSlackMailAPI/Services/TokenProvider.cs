@@ -8,26 +8,7 @@ namespace GetSlackMailAPI.Services
     public interface ITokenProvider
     {
         string GetToken();
-    }
-
-    public class KeyVaultTokenProvider : ITokenProvider
-    {
-        private string adClientId;
-        private string adKey;
-        private string keyUrl;
-
-        public KeyVaultTokenProvider(IConfigSetting config)
-        {
-            adClientId = config.GetSlackMailADID();
-            adKey = config.GetADClientKey();
-            keyUrl = config.GetSlackMaiADlURL();
-        }
-
-        public string GetToken()
-        {
-            return "";
-
-        }
+        string GetVerificationToken();
     }
 
     public class ConfigTokenProvider : ITokenProvider
@@ -43,6 +24,10 @@ namespace GetSlackMailAPI.Services
         {
             return _config.GetConfigBotToken();
 
+        }
+        public string GetVerificationToken()
+        {
+            return _config.GetVerificationToken();
         }
     }
 }

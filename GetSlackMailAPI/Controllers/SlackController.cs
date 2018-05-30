@@ -22,14 +22,19 @@ namespace GetSlackMailAPI.Controllers
             _mailBot = mailbot;
             _webClient = webclient;
         }
-
+        [HttpPost]
         public void Index()
         {
-            string channelID = "C0X725W2G";
-            string requesterID = "U93STPZ2L";
 
-            _mailBot.Run(channelID, requesterID);
-            //return Content();
+
+            string postVerificationToken = Request.Form["token"];
+            if(postVerificationToken == _tokenProvider.GetVerificationToken())
+            {
+                string channelID = Request.Form["channel_id"];
+                string requesterID = Request.Form["user_id"];
+                _mailBot.Run(channelID, requesterID);
+            }
+            
         }
     }
 }
