@@ -15,9 +15,10 @@ namespace GetSlackMailAPI
 
     class ErrorResponseException : Exception
     {
+        public string ErrorMessage { get; set; }
         public ErrorResponseException(string error, string responseType) : base($"Not OK response received for {responseType}, error message: {error}")
         {
-
+            ErrorMessage = error;
         }
     }
 }

@@ -37,14 +37,45 @@ namespace GetSlackMailAPI.WebLogic
             return $"{url}?{parameters}";
         }
 
-        public async Task<ConversationMembersResponse> GetChannelMembers(string channelName)
+        public async Task<ConversationMembersResponse> GetConversationMembers(string channelID)
         {
             string url = "https://slack.com/api/conversations.members";
-            string parameters = $"token={bottoken}&channel={channelName}";
+            string parameters = $"token={bottoken}&channel={channelID}";
 
             var JsonResponse = await _webclient.GetStringAsync(CreateUrl(url, parameters));
 
             return (ConversationMembersResponse)SlackResponseFactory.GetResponse(JsonResponse, "ConversationMembers");
+
+        }
+
+        /// <summary>
+        /// Gets the members of a channel, starting from the given cursor
+        /// </summary>
+        /// <param name="channelID"></param>
+        /// <param name="cursor"></param>
+        /// <returns></returns>
+        public async Task<ConversationMembersResponse> GetConversationMembers(string channelID, string cursor)
+        {
+            string url = "https://slack.com/api/conversations.members";
+            string parameters = $"token={bottoken}&channel={channelID}&cursor={cursor}";
+
+            var JsonResponse = await _webclient.GetStringAsync(CreateUrl(url, parameters));
+
+            return (ConversationMembersResponse)SlackResponseFactory.GetResponse(JsonResponse, "ConversationMembers");
+
+        }
+
+
+        public async Task<ChannelInfoResponse> GetConversationInfo(string channelID)
+        {
+            string url = "https://slack.com/api/conversations.info";
+            string parameters = $"token={bottoken}&channel={channelID}";
+
+            var JsonResponse = await _webclient.GetStringAsync(CreateUrl(url, parameters));
+
+            
+
+            return (ChannelInfoResponse)SlackResponseFactory.GetResponse(JsonResponse, "ChannelInfo");
 
         }
 
